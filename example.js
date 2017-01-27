@@ -1,7 +1,6 @@
 /** @jsx Slack */
 
-import Slack from 'slack-jsx'
-import { Message, Attachment, Action } from 'slack-jsx/components'
+import Slack, { Message, Attachment, Action } from 'slack-jsx'
 
 const attachment = (
   <Attachment pretext='Above the attachment'>
