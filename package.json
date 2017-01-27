@@ -1,6 +1,6 @@
 {
   "name": "slack-jsx",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Write Slack messages in component-based JSX syntax",
   "main": "dist/index.js",
   "module": "src/index.js",
