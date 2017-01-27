@@ -3,12 +3,12 @@
   "version": "0.1.1",
   "description": "Write Slack messages in component-based JSX syntax",
   "main": "dist/index.js",
-  "module": "dist/es-modules/index.js",
+  "module": "src/index.js",
   "repository": "git@github.com:zcei/slack-jsx.git",
   "author": "Stephan Schneider <stephanschndr@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "NODE_ENV=production babel src -d dist",
+    "build": "rimraf dist && NODE_ENV=production babel src -d dist",
     "lint": "eslint src test",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "NODE_ENV=test ava --verbose"
@@ -19,17 +19,22 @@
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.22.0",
+    "babel-plugin-transform-object-entries": "^1.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.22.0",
     "eslint": "^3.14.1",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-ava": "^4.0.1",
     "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-standard": "^2.0.1"
+    "eslint-plugin-standard": "^2.0.1",
+    "rimraf": "^2.5.4"
   },
   "ava": {
     "require": [
       "babel-register"
     ],
     "babel": "inherit"
+  },
+  "dependencies": {
+    "prop-types": "^0.2.0"
   }
 }
