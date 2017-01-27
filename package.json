@@ -6,5 +6,30 @@
   "module": "dist/es-modules/index.js",
   "repository": "git@github.com:zcei/slack-jsx.git",
   "author": "Stephan Schneider <stephanschndr@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "NODE_ENV=production babel src -d dist",
+    "lint": "eslint src test",
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "NODE_ENV=test ava --verbose"
+  },
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.22.0",
+    "eslint": "^3.14.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-ava": "^4.0.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  }
 }
