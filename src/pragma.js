@@ -1,4 +1,4 @@
-import { extract, validate, transform } from './prop-types'
+import { extract, validate, transform, merge } from './prop-types'
 
 const types = extract('type')
 const keys = extract('key')
@@ -9,10 +9,15 @@ export default function h (node, propsOrNull, child = [], ...children) {
   const { propTypes = {} } = node
 
   if (!props.skipValidation) {
-    validate(props, types(propTypes), node.name)
+    const validationError = validate(props, types(propTypes), node.name)
+
+    if (validationError) {
+      throw validationError
+    }
   }
 
-  const snakeCased = transform(props, keys(propTypes))
+  const transformedProps = transform(props, keys(propTypes))
+  const finalProps = merge(props, transformedProps)
 
-  return node(props, allChildren)
+  return node(finalProps, allChildren)
 }
